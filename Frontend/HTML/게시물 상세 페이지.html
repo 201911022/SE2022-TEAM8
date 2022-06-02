@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 제이쿼리 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- 모바일 비율 화면 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>상세 페이지</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="headerfix">
+                <div class="d-flex justify-content-between  pt-3">
+                    <div class="ml-3"><img src="file/bell.png" ></div>
+                    <div><h4>8 clothes</h4></div>
+                    <div class="mr-3"><img src="file/search.png"></div>
+                </div>
+            </div>
+
+            <div class="image d-flex justify-content-center">
+                <div>
+                <img src="file/image.jpg" width="350">
+                </div>
+            </div>
+
+            <div class="category d-flex justify-content-between">
+                <div class="m-2">
+                <button>상의</button>
+                <button>여름</button>
+                </div>
+                <div class="mt-3">
+                    <div><img src="file/heart.png"> 좋아요 37개</div>
+                </div>
+            </div>
+
+            <div class="user p-3">
+                아이디
+            </div>
+
+            <div class="item-title p-3">
+                <b>Nerdy 검정 반팔티</b>
+            </div>
+            
+            <div class="item-info pl-3 pt-1">
+                여름 반팔티
+            </div>
+
+            <div class="footerfix">  
+                <div class="d-flex justify-content-between">
+                    <div class="ml-3">
+                        <div class="pl-1"><img src="file/cloud.png"></div>
+                        <div>날씨</div>
+                    </div>
+                    <div class="ml-3">
+                        <div><img src="file/home.png"></div>
+                        <div class="pl-1">홈</div>
+                    </div>
+                    <div class="mr-3">
+                        <div class="pl-4"><img src="file/user.png"></div>
+                        <div>나의 옷장</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<style>
+    #wrap{
+        max-width: 500px;     
+    }
+    .headerfix{
+        border-bottom: 1px solid black;
+    }
+    .image{
+        border-bottom: 1px solid black;
+    }
+    .category{
+        border-bottom: 1px solid gray;
+    }
+    .category button{
+        border: 1px solid gray;
+        background-color: whitesmoke;
+        border-radius: 12px;
+        margin: 5px;
+    }
+    .user{
+        font-size: 16px;
+        border-bottom: 1px solid gray;
+    }
+    .footerfix{
+        max-width: 500px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        border-top: 1px solid black;
+    }
+
+</style>
