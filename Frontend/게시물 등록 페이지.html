@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 제이쿼리 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- 모바일 비율 화면 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 언어 -->
+        <meta charset="UTF-8">
+        <title>게시물 작성/수정</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="headerfix">
+                <div class="d-flex justify-content-between pt-2">
+                    <div class="ml-3"><img src="file/cancle.png" width="25"></div>
+                    <div><h5>게시물 작성</h5></div>
+                    <div class="upload mr-3"><button>완료</button></div>
+                </div>   
+            </div>
+            <label for="input_file">
+                <div class="upload-image d-flex justify-content-center m-3 p-3">
+                    <div>
+                        <img src="file/camera.png" width="30">
+                    </div>
+                </div>
+            </label>
+            <input type="file" id="input_file" class="d-none" accept="image/*">
+            <img id="pre" src="#" class="d-none" style="width: 150px;"/>
+            <hr/>
+
+            <div class="post-title pl-3">
+                <input type="text" placeholder="제목">
+            </div>
+            <hr/>
+            <div class="d-flex">
+                <div class="category pl-3">
+                    <select>
+                        <option>카테고리 </option>
+                        <option>봄</option>
+                        <option>여름</option>
+                        <option>가을</option>
+                        <option>겨울</option>
+                        <option>사계절</option>
+                    </select>
+                </div>
+                <div class="category pl-3">
+                    <select>
+                        <option>카테고리 </option>
+                        <option>상의</option>
+                        <option>아우터</option>
+                        <option>바지</option>
+                        <option>원피스</option>
+                        <option>스커트</option>
+                        <option>가방</option>
+                        <option>모자</option>
+                        <option>신발</option>
+                        <option>전신</option>
+                    </select>
+                </div>
+            </div>
+            <hr/>
+
+            <div class="content pl-3">
+                <input type="text" placeholder="내용">
+            </div>
+
+            <div class="footerfix">  
+                <div class="d-flex justify-content-between">
+                    <div class="ml-3">
+                        <div class="pl-1"><img src="file/cloud.png"></div>
+                        <div>날씨</div>
+                    </div>
+                    <div class="ml-3">
+                        <div><img src="file/home.png"></div>
+                        <div class="pl-1">홈</div>
+                    </div>
+                    <div class="mr-3">
+                        <div class="pl-4"><img src="file/user.png"></div>
+                        <div>나의 옷장</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    $(document).ready(function(){
+        $("#input_file").on("change", function(event) {
+
+            var file = event.target.files[0];
+
+            var reader = new FileReader(); 
+            reader.onload = function(e) {
+
+                $("#pre").attr("src", e.target.result);
+                $("#pre").removeClass("d-none")
+            }
+
+            reader.readAsDataURL(file);
+        });
+    });
+</script>
+<style>
+    #wrap{
+        max-width: 500px;     
+    }
+    .headerfix{
+        border-bottom: 1px solid black;
+    }
+    .upload button{
+        background-color: white;
+        border: none;
+    }
+    .upload-image{
+        border: 1px solid gray;
+        background-color: whitesmoke;
+        border-radius: 5px;
+        width: 70px;
+        height: 70px;
+    }
+    .post-title input{
+        border: none;
+    }
+    .post-title input{
+        width: 340px;
+    }
+    .content input{
+        border: none;
+        width: 340px;
+        height: 300px;
+    }
+    .footerfix{
+        max-width: 500px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        border-top: 1px solid black;
+    }
+</style>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 제이쿼리 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- 모바일 비율 화면 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="headerfix">
+                <div class="d-flex justify-content-between  pt-3">
+                    <div class="ml-3"><img src="file/bell.png" ></div>
+                    <div><h4>8 clothes</h4></div>
+                    <div class="mr-3"><img src="file/search.png"></div>
+                </div>
+            </div>
+
+            <div class="title d-flex justify-content-center pt-4 pb-2">
+                회원가입
+            </div>
+
+            <div class="d-flex flex-direction-column justify-content-center">
+                <div>
+                <div>
+                    <h3 class="sign-up-title">
+                        아이디
+                    </h3>
+                    <span class="box int-id">
+                        <input placeholder=" 아이디" type="text" id="id" class="int" maxlength="20">
+                    </span>
+                </div>
+                <div>
+                    <h3 class="sign-up-title">
+                        비밀번호
+                    </h3>
+                    <span class="box int-pw">
+                        <input placeholder=" 비밀번호" type="password" id="pw1" class="int" maxlength="20">
+                    </span>
+                </div>
+                <div>
+                    <h3 class="sign-up-title">
+                        비밀번호 재확인
+                    </h3>
+                    <span class="box int-pw-check">
+                        <input placeholder=" 비밀번호 재입력" type="password" id="pw2" class="int" maxlength="20">
+                    </span>
+                </div>
+                <div>
+                    <h3 class="sign-up-title">
+                        이름
+                    </h3>
+                    <span class="box int-name">
+                        <input placeholder=" 이름" type="text" id="name" class="int" maxlength="20">
+                    </span>
+                </div>
+                <div>
+                    <h3 class="sign-up-title">
+                        전화번호</h3>
+                    <span class="box int_mobile">
+                        <input placeholder=" 전화번호" type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                    </span>   
+                </div>
+
+                <div class="button2">
+                    <button type="button" id="join-button">
+                        <span>가입하기</span>
+                    </button>
+                </div>
+                </div>
+            </div>
+
+            <div class="footerfix">
+                <div class="d-flex justify-content-between">
+                    <div class="ml-3">
+                        <div class="pl-1"><img src="file/cloud.png"></div>
+                        <div>날씨</div>
+                    </div>
+                    <div class="ml-3">
+                        <div><img src="file/home.png"></div>
+                        <div class="pl-1">홈</div>
+                    </div>
+                    <div class="mr-3">
+                        <div class="pl-4"><img src="file/user.png"></div>
+                        <div>나의 옷장</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+<style>
+    #wrap{
+        max-width: 500px;
+    }
+    .headerfix{
+        border-bottom: 1px solid black;
+    }
+    .title{
+        font-size: 20px;
+    }
+    h3 {
+        margin: 10px 0 8px 0;
+        font-size: 14px;
+        font-weight: 700;
+    }
+    .box {
+        display: block;
+        width: 250px;
+        height: 48px;
+        border: solid 1px #dadada;
+        margin: 10px 14px 10px 0px;
+    }
+    .int {
+        display: block;
+        position: relative;
+        width: 230px;
+        height: 29px;
+        border: none;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+    .button {
+        margin-top: 30px;
+    }
+
+    #join-button {
+        width: 250px;
+        height: 48px;
+        margin-top: 10px;
+        border: 0px;
+        cursor: pointer;
+        color: #fff;
+        background-color: #4e4e4e;
+        font-size: 18px;
+    }
+    .footerfix{
+        max-width: 500px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        border-top: 1px solid black;
+    }
+</style>
