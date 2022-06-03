@@ -25,24 +25,25 @@
             <div class="title d-flex justify-content-center pt-5 pb-3">
                 로그인
             </div>
-
-            <div class="input-section d-flex flex-direction-column justify-content-center pt-3">
-                <div>
-                <div class="id-input">	
-                    <input placeholder="아이디" type="text"></input>
+            <form id = "loginForm">
+                <div class="input-section d-flex flex-direction-column justify-content-center pt-3">
+                    <div>
+                        <div class="id-input">	
+                            <input placeholder="아이디" type="text" id="loginIdInput"></input>
+                        </div>
+                        <div class="pw-input mt-2">	
+                            <input placeholder="비밀번호" type="password" id="passwordInput"></input>
+                        </div>
+                        <div class="login-stay mt-2">
+                            <input type="checkbox" name="login-stay" value="로그인 상태 유지">
+                            로그인 상태 유지
+                        </div>
+                        <div class="login-button mt-2">
+                            <button type="submit">로그인</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="pw-input mt-2">	
-                    <input placeholder="비밀번호" type="password"></input>
-                </div>
-                <div class="login-stay mt-2">
-                    <input type="checkbox" name="login-stay" value="로그인 상태 유지">
-                    로그인 상태 유지
-                </div>
-                <div class="login-button mt-2">
-                    <button>로그인</button>
-                </div>
-                </div>
-            </div>
+            </form>
 
             <div class="account-section d-flex flex-direction-row justify-content-center pt-2">
                 <div class="find-button">
@@ -74,7 +75,23 @@
 </html>
 
 <script>
-
+		$(document).ready(function(){
+			$("#loginForm").on("submit", function(e){
+				e.preventDefault();
+				
+				var loginId = $("#loginIdInput").val();
+				var password = $("#passwordInput").val();
+				
+				if(loginId ==""){
+					alert("아이디를 입력하세요");
+					return ;
+				}
+				if(password == ""){
+					alert("비밀번호를 입력하세요");
+					return;
+				}
+            });
+        });
 </script>
 
 <style>
