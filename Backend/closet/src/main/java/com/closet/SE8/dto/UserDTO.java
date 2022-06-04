@@ -18,13 +18,17 @@ public class UserDTO {
     private Integer userNo; // pk
     private String userId;
     private String name;
-    private String passwd;
+    private String pw;
+    private String tel;
+    private String role;
 
     public UserEntity toEntity() {
         return UserEntity.builder()
                 .userId(userId)
                 .name(name)
-                .passwd(passwd)
+                .pw(pw)
+                .tel(tel)
+                .role(role)
                 .build();
     }
 }

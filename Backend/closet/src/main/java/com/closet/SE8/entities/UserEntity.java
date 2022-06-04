@@ -6,6 +6,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -30,7 +31,7 @@ public class UserEntity {
 	
 	@Id
     @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", allocationSize = 1)
-    @GeneratedValue(strategy = SEQUENCE, generator = "user_sequence")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "user_sequence")
     private Long userNo; // pk
 
     @Column(name = "userId", unique = true, nullable = false)
@@ -39,15 +40,22 @@ public class UserEntity {
     @Column(name = "name", nullable = false)
     private String name;
     
-    @Column(name = "passwd", nullable = false)
-    private String passwd;
+    @Column(name = "pw", nullable = false)
+    private String pw;
     
+    @Column(name = "tel", nullable = false)
+    private String tel;
+    
+    @Column(name = "role", nullable = false)
+    private String role;
  
     public UserDTO toDTO() {
         return UserDTO.builder()
                 .userId(userId)
                 .name(name)
-                .passwd(passwd)
+                .pw(pw)
+                .tel(tel)
+                .role(role)
                 .build();
     }
 }
