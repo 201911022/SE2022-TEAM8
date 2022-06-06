@@ -20,6 +20,7 @@ public class ArticleDTO {
     private LocalDateTime regDate;
     private LocalDateTime lastModified;
     private boolean isPublished;
+    private String image;
 
     public ArticleEntity toEntity() {
         return ArticleEntity.builder()
@@ -30,6 +31,7 @@ public class ArticleDTO {
                 .regDate(regDate)
                 .lastModified(lastModified)
                 .isPublished(isPublished)
+                .image(image)
                 .build();
     }
 }

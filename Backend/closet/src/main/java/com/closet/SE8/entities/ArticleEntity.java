@@ -44,6 +44,9 @@ public class ArticleEntity {
     @Column(name = "isPublished", nullable = false)
     private boolean isPublished;
 
+    @Column(name = "image", nullable = false)
+    private String image;
+
     public ArticleDTO toDTO() {
         return ArticleDTO.builder()
                 .userId(userId)
@@ -53,6 +56,7 @@ public class ArticleEntity {
                 .regDate(regDate)
                 .lastModified(lastModified)
                 .isPublished(isPublished)
+                .image(image)
                 .build();
     }
 }
