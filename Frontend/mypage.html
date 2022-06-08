@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 제이쿼리 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- 모바일 비율 화면 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <!-- 타이틀 -->
+        <title>내 정보</title>
+    </head>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="headerfix">
+                <div class="d-flex justify-content-between  pt-3">
+                    <div class="ml-3"><img src="file/bell.png" ></div>
+                    <div><h4>8 clothes</h4></div>
+                    <div class="mr-3"><img src="file/search.png"></div>
+                </div>
+            </div>
+
+            <div class="title d-flex justify-content-center pt-4 pb-2 m-4">
+                내 정보
+            </div>
+            <table class="d-flex justify-content-center">
+                <tr>
+                    <th scope="row">아이디</th>
+                    <td>user id</td>
+                </tr>
+                <tr>
+                    <th scope="row">비밀번호</th>
+                    <td>user pw</td>
+                </tr>
+                
+                <tr style="display:1">
+                <th scope="row">이름</th>
+                            <td>user name</td>
+                        </tr>
+                
+                <tr>
+                <th scope="row">휴대전화</th>
+                    <td>user number</td>
+                        </tr>
+                <tr>
+                <th scope="row">이메일</th>
+                            <td>user id</td>
+                </tr>
+            </table>
+            </div>
+        </div>
+            <div class="footerfix">
+                <div class="d-flex justify-content-between">
+                    <div class="ml-3">
+                        <div class="pl-1"><img src="file/cloud.png"></div>
+                        <div>날씨</div>
+                    </div>
+                    <div class="ml-3">
+                        <div><img src="file/home.png"></div>
+                        <div class="pl-1">홈</div>
+                    </div>
+                    <div class="mr-3">
+                        <div class="pl-4"><img src="file/user.png"></div>
+                        <div>나의 옷장</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+</script>
+
+<style>
+    #wrap{
+        max-width: 500px;
+    }
+    .headerfix{
+        border-bottom: 1px solid black;
+    }
+    .info-title{
+        font-size: 15px;
+        width: 70px;
+        border-right: solid 1px gainsboro;
+    }
+    th{
+        padding: 20px;
+        text-align: left;
+        vertical-align: top;
+        border-top: solid 1px lightslategray;
+        border-bottom: solid 1px lightslategray;
+    }
+    td{
+        padding: 20px;
+        text-align: right;
+        vertical-align: top;
+        border-top: solid 1px lightslategray;
+        border-bottom: solid 1px lightslategray;
+    }
+    .box {
+        display: block;
+        width: 250px;
+        height: 48px;
+        border: solid 1px #dadada;
+        margin: 10px 14px 10px 0px;
+    }
+    .int {
+        display: block;
+        position: relative;
+        width: 230px;
+        height: 29px;
+        border: none;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+    .button {
+        margin-top: 30px;
+    }
+
+    #update-button {
+        width: 250px;
+        height: 48px;
+        margin-top: 10px;
+        border: 0px;
+        cursor: pointer;
+        color: #fff;
+        background-color: #4e4e4e;
+        font-size: 18px;
+    }
+    .footerfix{
+        max-width: 500px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        border-top: 1px solid black;
+    }
+</style>
