@@ -7,4 +7,5 @@ import com.closet.SE8.entities.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long>{
     Optional<UserEntity> findByUserId(String userId);
+    Optional<UserEntity> findByPw(String pw);
 }

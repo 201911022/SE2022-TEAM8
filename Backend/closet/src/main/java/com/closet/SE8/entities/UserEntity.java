@@ -1,8 +1,5 @@
 package com.closet.SE8.entities;
 
-import static javax.persistence.GenerationType.SEQUENCE;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

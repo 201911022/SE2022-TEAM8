@@ -1,7 +1,7 @@
 package com.closet.SE8.dto;
 
 import com.closet.SE8.entities.ArticleEntity;
-import com.closet.SE8.entities.UserEntity;
+import com.closet.SE8.dto.ArticleDTO;
 import lombok.*;
 
 import java.time.LocalDateTime;

@@ -1,7 +1,6 @@
 package com.closet.SE8.controller;
 
 import com.closet.SE8.dto.ArticleDTO;
-import com.closet.SE8.dto.UserDTO;
 import com.closet.SE8.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

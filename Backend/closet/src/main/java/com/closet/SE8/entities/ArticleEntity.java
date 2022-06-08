@@ -1,12 +1,11 @@
 package com.closet.SE8.entities;
 
 import com.closet.SE8.dto.ArticleDTO;
-import com.closet.SE8.dto.UserDTO;
+import com.closet.SE8.entities.ArticleEntity;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Table(name = "article")
 @Entity(name = "Article")
