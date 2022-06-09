@@ -1,10 +1,7 @@
 package com.closet.SE8.dto;
 
 import com.closet.SE8.entities.ArticleEntity;
-import com.closet.SE8.dto.ArticleDTO;
 import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -12,26 +9,23 @@ import java.time.LocalDateTime;
 @ToString
 @Builder
 public class ArticleDTO {
-    private Integer articleNo; // pk
+    private Long articleNo; // pk
     private String userId;
     private String title;
     private String content;
     private String category;
-    private LocalDateTime regDate;
-    private LocalDateTime lastModified;
-    private boolean isPublished;
     private String image;
-
+    private String season;
+    private String shared;
     public ArticleEntity toEntity() {
         return ArticleEntity.builder()
                 .userId(userId)
                 .title(title)
                 .content(content)
                 .category(category)
-                .regDate(regDate)
-                .lastModified(lastModified)
-                .isPublished(isPublished)
                 .image(image)
+                .season(season)
+                .shared(shared)
                 .build();
     }
 }

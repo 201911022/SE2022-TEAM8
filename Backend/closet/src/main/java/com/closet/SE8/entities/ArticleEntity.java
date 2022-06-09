@@ -5,7 +5,6 @@ import com.closet.SE8.entities.ArticleEntity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Table(name = "article")
 @Entity(name = "Article")
@@ -22,7 +21,7 @@ public class ArticleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "article_sequence")
     private Long articleNo;
 
-    @Column(name = "userId", unique = true, nullable = false)
+    @Column(name = "userId", nullable = false)
     private String userId;
 
     @Column(name = "title", nullable = false)
@@ -34,17 +33,15 @@ public class ArticleEntity {
     @Column(name = "category", nullable = false)
     private String category;
 
-    @Column(name = "regDate", nullable = false)
-    private LocalDateTime regDate;
-
-    @Column(name = "lastModified", nullable = false)
-    private LocalDateTime lastModified;
-
-    @Column(name = "isPublished", nullable = false)
-    private boolean isPublished;
-
     @Column(name = "image", nullable = false)
     private String image;
+
+    @Column(name = "season", nullable = false)
+    private String season;
+    
+    @Column(name = "shared", nullable = false)
+    private String shared;
+
 
     public ArticleDTO toDTO() {
         return ArticleDTO.builder()
@@ -52,10 +49,9 @@ public class ArticleEntity {
                 .title(title)
                 .content(content)
                 .category(category)
-                .regDate(regDate)
-                .lastModified(lastModified)
-                .isPublished(isPublished)
                 .image(image)
+                .season(season)
+                .shared(shared)
                 .build();
     }
 }
