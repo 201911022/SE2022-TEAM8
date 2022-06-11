@@ -58,7 +58,22 @@ public class ArticleService implements ArticleDAO {
 
     //공유 게시물 조회 부분
     public List<ArticleEntity> sharedArticleList() {
-    	return articleRepository.findAll();
+    	return articleRepository.findAllByShared("true");
     }
 
+
+    //  내 게시물 조회 부분
+    public List<ArticleEntity> myArticleList(String id) {
+        return articleRepository.findAllByUserId(id);
+    }
+
+    //상세조회
+    public Optional<ArticleEntity> detailArticle(Long articleNo) {
+        Optional<ArticleEntity> articleDetail = this.articleRepository.findByArticleNo(articleNo);
+        
+        if(articleDetail.isPresent()) {
+            return articleDetail;
+        }
+        return null;
+    }
 }

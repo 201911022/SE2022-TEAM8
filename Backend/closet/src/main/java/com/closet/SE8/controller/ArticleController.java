@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -57,14 +58,41 @@ public class ArticleController {
         }
     }
 
+    //공유 게시물 조회부분
     @GetMapping("/articlelist")
     public ResponseEntity<Map<String, Object>> sharedArticleList(HttpServletRequest request){
-    	
-    	List<ArticleEntity> list = articleService.sharedArticleList();
-    	
-    	Map<String, Object> map = new HashMap<>();
-    	map.put("articlelist", list);
-    	return ResponseEntity.ok(map);
+        try{
+        	List<ArticleEntity> list = articleService.sharedArticleList();
+	        Map<String, Object> map = new HashMap<>();
+	        map.put("articlelist", list);
+	        return ResponseEntity.ok(map);
+        }catch(Exception e) {
+        	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+
+    //내 게시물 조회 부분
+    @GetMapping("/articlelist/my")
+    public ResponseEntity<Map<String, Object>> myArticleList(HttpServletRequest request){
+		try{
+			HttpSession session = request.getSession();
+			String sessionName = (String)session.getAttribute("loginId");
+			if(sessionName == null) {
+	        	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+			}
+        	List<ArticleEntity> list = articleService.myArticleList(sessionName);
+	        Map<String, Object> map = new HashMap<>();
+	        map.put("articlelist", list);
+	        return ResponseEntity.ok(map);
+        }catch(Exception e) {
+        	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
+    }
+    //상세조회
+    @GetMapping("/articledetail/{articleNo}")
+    public ResponseEntity<Optional<ArticleEntity>> detailArticle(@PathVariable(name="articleNo") Long articleNo, HttpServletRequest request) {
+        Optional<ArticleEntity> article = articleService.detailArticle(articleNo);
+        return ResponseEntity.ok(article);
     }
 
 
