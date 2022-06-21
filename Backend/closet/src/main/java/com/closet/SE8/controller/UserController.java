@@ -1,6 +1,7 @@
 package com.closet.SE8.controller;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.closet.SE8.dto.UserDTO;
+import com.closet.SE8.entities.UserEntity;
 import com.closet.SE8.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -65,12 +68,23 @@ public class UserController {
 	}
 	
 	@PostMapping("/delete/{id}")
-	ResponseEntity<Void> update(@PathVariable(name="id") String id, HttpServletRequest request){
+	public ResponseEntity<Void> delete(@PathVariable(name="id") String id, HttpServletRequest request){
 		if(userService.delete(id)) {
 			return ResponseEntity.ok(null);
 		}
 		else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
+	}
+	
+	@GetMapping("/myinfo")
+	public ResponseEntity<Optional<UserEntity>> myinfo(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		String sessionName = (String)session.getAttribute("loginId");
+		if(sessionName == null) {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+		Optional<UserEntity> user = userService.myinfo(sessionName);
+        return ResponseEntity.ok(user);
 	}
 }

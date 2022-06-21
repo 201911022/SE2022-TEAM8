@@ -60,4 +60,13 @@ public class UserService implements UserDAO{
 			return false;
 		}
 	}
+	
+	public Optional<UserEntity> myinfo(String userId) {
+        Optional<UserEntity> user = this.userRepository.findByUserId(userId);
+        
+        if(user.isPresent()) {
+            return user;
+        }
+        return null;
+    }
 }

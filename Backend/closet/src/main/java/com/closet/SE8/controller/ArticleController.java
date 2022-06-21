@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,9 +27,6 @@ public class ArticleController {
     //게시글 생성
     @PostMapping("/article/create")
     public ResponseEntity<Void> createArticle(@RequestBody ArticleDTO article, HttpServletRequest request) {
-    	HttpSession session = request.getSession();
-		String sessionName = (String)session.getAttribute("loginId");
-		article.setUserId(sessionName);
         Long no = articleService.createArticle(article);
         System.out.println(no);
         return ResponseEntity.ok(null);
@@ -49,7 +45,7 @@ public class ArticleController {
     
     //게시글 삭제
     @PostMapping("/article/delete/{no}")
-    public ResponseEntity<Void> deleteArticle(@PathVariable(name="no") Long no, @RequestBody ArticleDTO article, HttpServletRequest request) {
+    public ResponseEntity<Void> deleteArticle(@PathVariable(name="no") Long no, HttpServletRequest request) {
         if(articleService.delete(no)) {
             return ResponseEntity.ok(null);
         }
@@ -72,15 +68,10 @@ public class ArticleController {
     }
 
     //내 게시물 조회 부분
-    @GetMapping("/articlelist/my")
-    public ResponseEntity<Map<String, Object>> myArticleList(HttpServletRequest request){
+    @GetMapping("/articlelist/my/{id}")
+    public ResponseEntity<Map<String, Object>> myArticleList(@PathVariable(name="id") String id, HttpServletRequest request){
 		try{
-			HttpSession session = request.getSession();
-			String sessionName = (String)session.getAttribute("loginId");
-			if(sessionName == null) {
-	        	return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-			}
-        	List<ArticleEntity> list = articleService.myArticleList(sessionName);
+        	List<ArticleEntity> list = articleService.myArticleList(id);
 	        Map<String, Object> map = new HashMap<>();
 	        map.put("articlelist", list);
 	        return ResponseEntity.ok(map);
