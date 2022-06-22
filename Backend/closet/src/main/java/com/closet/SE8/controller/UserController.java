@@ -57,9 +57,19 @@ public class UserController {
         return ResponseEntity.ok(null);
 	}
 	
-	@PostMapping("/update/{id}")
-	public ResponseEntity<Void> update(@PathVariable(name="id") String id, @RequestBody HashMap<String, String> map, HttpServletRequest request){
-		if(userService.update(map, id)) {
+	@PostMapping("/update/pw/{id}")
+	public ResponseEntity<Void> updatePw(@PathVariable(name="id") String id, @RequestBody HashMap<String, String> map, HttpServletRequest request){
+		if(userService.updatePassword(map, id)) {
+			return ResponseEntity.ok(null);
+		}
+		else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+		}
+	}
+	
+	@PostMapping("/update/info/{id}")
+	public ResponseEntity<Void> updateInfo(@PathVariable(name="id") String id, @RequestBody HashMap<String, String> map, HttpServletRequest request){
+		if(userService.updateInfo(map, id)) {
 			return ResponseEntity.ok(null);
 		}
 		else {
@@ -77,14 +87,12 @@ public class UserController {
 		}
 	}
 	
-	@GetMapping("/myinfo")
-	public ResponseEntity<Optional<UserEntity>> myinfo(HttpServletRequest request){
-		HttpSession session = request.getSession();
-		String sessionName = (String)session.getAttribute("loginId");
-		if(sessionName == null) {
+	@GetMapping("/myinfo/{id}")
+	public ResponseEntity<Optional<UserEntity>> myinfo(@PathVariable(name="id") String id, HttpServletRequest request){
+		if(id == null) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
 		}
-		Optional<UserEntity> user = userService.myinfo(sessionName);
+		Optional<UserEntity> user = userService.myinfo(id);
         return ResponseEntity.ok(user);
 	}
 }
