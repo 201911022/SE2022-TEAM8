@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 제이쿼리 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- 모바일 비율 화면 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 언어 -->
+        <meta charset="UTF-8">
+        <!-- 아이콘 -->
+        
+        <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous"></script>
+        <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+        <title>메인</title>
+    </head>
+    <script>
+        $(document).ready(function(){  
+            $.ajax({
+                url:"http://localhost:8080/team8/articlelist",
+                type:"get",
+                datatype:"json",
+                success:function(json){
+                    
+                    for(var i =0; i <json.articlelist.length; i++){
+                        
+                        $('#post').append(
+                            `<a href = "postingdetail2.html?id=`+ json.articlelist[i].articleNo +`"
+                                <div class="d-flex ` + json.articlelist[i].category +` pl-2 line pb-2 ` + json.articlelist[i].season + `">
+                                    <div class="image_box "><img src="`+json.articlelist[i].image+`" style="width: 150px; height: 100px;"></div>
+                                    <div class="pl-2 write_box">
+                                        <div class="hi"><h2>`+json.articlelist[i].title +` </h2></div>
+                                        <div class="d-flex">
+                                            <div>`+json.articlelist[i].userId+`</div>
+                                            <div class="pl-4">#` + json.articlelist[i].category +` #` + json.articlelist[i].season + `</div>
+                                        </div>
+                                        <div class="heart_div pr-3"><img src="file/heart3.png"></div>
+                                    </div>
+                                </div>
+                            </a>`
+                    );
+                    }   
+                },
+                error:function(){
+                    alert("오류");
+                }
+            });
+        });
+    </script>
+    <body>
+        <div id="wrap">
+            <div class="headerfix pb-2">
+                <div class="d-flex justify-content-between  pt-3">
+                    <div class="ml-3 pt-1"><img src="file/bell.png" ></div>
+                    <div><img src="file/logo.png" style="width: 70px;"></div>
+                    <div class="mr-3 pt-1"><img src="file/search.png"></div>
+                </div>
+                
+            </div>
+            
+            <div class="select_box mr-3 pt-3" >
+                <select id="select0">
+                    <option>정렬기준</option>
+                    <option id="set1">계절</option>
+                    <option id="set2">옷 종류</option>
+                </select>
+                <select id="select1" class="d-none">
+                    <option id="sea">계절 </option>
+                    <option id="봄">봄</option>
+                    <option id="여름">여름</option>
+                    <option id="가을">가을</option>
+                    <option id="겨울">겨울</option>
+                    <option id="사계절">사계절</option>
+                    <option id="기타">기타</option>
+                </select>
+                <select id="select2" class="d-none">
+                    <option id="cate">옷 종류 </option>
+                    <option id="cate1">상의</option>
+                    <option id="cate2">아우터</option>
+                    <option id="cate3">바지</option>
+                    <option id="cate4">원피스</option>
+                    <option id="cate5">스커트</option>
+                    <option id="cate6">가방</option>
+                    <option id="cate7">모자</option>
+                    <option id="cate8">신발</option>
+                    <option id="cate9">전신</option>
+                    <option id="cate10">기타</option>
+                </select>
+            </div>
+            
+            <br>
+            <br>
+            <p id="po">
+
+            </p>
+            <p id ="post">
+                
+            </p>
+            <br>
+            <br>
+            <br>
+            
+            <div class="footerfix pt-1">  
+                <div class="d-flex justify-content-between">
+                    <div class="ml-3">
+                        <div class="CurrIcon pl-4"></div>
+                        <div class="d-flex">
+                            <div class="City"></div>  &nbsp;
+                            <div class="CurrTemp"></div>
+                        </div>
+                    </div>
+                    <a href="index.html">
+                        <div class="ml-3">
+                            <div><img src="file/home.png"></div>
+                            <div class="pl-1">홈</div>
+                        </div>
+                    </a>
+                    <a href="myclothes.html">
+                        <div class="mr-3">
+                            <div class="pl-4"><img src="file/user.png"></div>
+                            <div>나의 옷장</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
+
+<script>
+    $(document).ready(function(){
+        let weatherIcon = {
+        '01' : 'fas fa-sun',
+        '02' : 'fas fa-cloud-sun',
+        '03' : 'fas fa-cloud',
+        '04' : 'fas fa-cloud-meatball',
+        '09' : 'fas fa-cloud-sun-rain',
+        '10' : 'fas fa-cloud-showers-heavy',
+        '11' : 'fas fa-poo-storm',
+        '13' : 'far fa-snowflake',
+        '50' : 'fas fa-smog'
+        };
+
+        $.ajax({
+        url:'http://api.openweathermap.org/data/2.5/weather?q=Seoul&APPID=21e68587a0b75bfea426c57b2b2a6b9d&units=metric',
+
+        dataType:'json',
+        type:'GET',
+        success:function(data){
+        var $Icon = (data.weather[0].icon).substr(0,2);
+        var $Temp = Math.floor(data.main.temp) + 'º';
+        var $city = data.name;
+
+        $('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +' fa-lg"></i>');
+        $('.City').append($city);
+        $('.CurrTemp').append($Temp);
+       
+        }
+        });
+        $("#select0").change(function(){
+            var result = $("#select0 option:selected").val();
+            if(result =="계절"){
+                $("#select1").removeClass("d-none");
+                $("#select2").addClass("d-none");
+            }
+            else if(result =="옷 종류"){
+                $("#select2").removeClass("d-none");
+                $("#select1").addClass("d-none");
+            }
+        });
+        $("#select1").change(function(){
+            var result = $("#select1 option:selected").val();
+           
+            if(result == "봄"){
+               
+                $(".봄").removeClass("d-none")
+                $(".여름").addClass("d-none")
+                $(".가을").addClass("d-none")
+                $(".겨울").addClass("d-none")
+                $(".사계절").addClass("d-none")
+                $(".기타").addClass("d-none")
+                $(".봄").addClass("d-flex")
+                $(".여름").removeClass("d-flex")
+                $(".가을").removeClass("d-flex")
+                $(".겨울").removeClass("d-flex")
+                $(".사계절").removeClass("d-flex")
+                $(".기타").removeClass("d-flex")
+
+            }
+            else if(result == "여름"){
+                $(".봄").addClass("d-none")
+                $(".여름").removeClass("d-none")
+                $(".가을").addClass("d-none")
+                $(".겨울").addClass("d-none")
+                $(".사계절").addClass("d-none")
+                $(".기타").addClass("d-none")
+                $(".봄").removeClass("d-flex")
+                $(".여름").addClass("d-flex")
+                $(".가을").removeClass("d-flex")
+                $(".겨울").removeClass("d-flex")
+                $(".사계절").removeClass("d-flex")
+                $(".기타").removeClass("d-flex")
+
+
+            }
+            else if(result == "가을"){
+                $(".봄").addClass("d-none")
+                $(".여름").addClass("d-none")
+                $(".가을").removeClass("d-none")
+                $(".겨울").addClass("d-none")
+                $(".사계절").addClass("d-none")
+                $(".기타").addClass("d-none")
+                $(".봄").removeClass("d-flex")
+                $(".여름").removeClass("d-flex")
+                $(".가을").addClass("d-flex")
+                $(".겨울").removeClass("d-flex")
+                $(".사계절").removeClass("d-flex")
+                $(".기타").removeClass("d-flex")
+
+
+            }
+            else if(result == "겨울"){
+                $(".봄").addClass("d-none")
+                $(".여름").addClass("d-none")
+                $(".가을").addClass("d-none")
+                $(".겨울").removeClass("d-none")
+                $(".사계절").addClass("d-none")
+                $(".기타").addClass("d-none")
+                $(".봄").removeClass("d-flex")
+                $(".여름").removeClass("d-flex")
+                $(".가을").removeClass("d-flex")
+                $(".겨울").addClass("d-flex")
+                $(".사계절").removeClass("d-flex")
+                $(".기타").removeClass("d-flex")
+
+
+            }
+            else if(result == "사계절"){
+                $(".봄").addClass("d-none")
+                $(".여름").addClass("d-none")
+                $(".가을").addClass("d-none")
+                $(".겨울").addClass("d-none")
+                $(".사계절").removeClass("d-none")
+                $(".기타").addClass("d-none")
+                $(".봄").removeClass("d-flex")
+                $(".여름").removeClass("d-flex")
+                $(".가을").removeClass("d-flex")
+                $(".겨울").removeClass("d-flex")
+                $(".사계절").addClass("d-flex")
+                $(".기타").removeClass("d-flex")
+
+
+            }
+            else if(result == "기타"){
+                $(".봄").addClass("d-none")
+                $(".여름").addClass("d-none")
+                $(".가을").addClass("d-none")
+                $(".겨울").addClass("d-none")
+                $(".사계절").addClass("d-none")
+                $(".기타").removeClass("d-none")
+                $(".봄").removeClass("d-flex")
+                $(".여름").removeClass("d-flex")
+                $(".가을").removeClass("d-flex")
+                $(".겨울").removeClass("d-flex")
+                $(".사계절").removeClass("d-flex")
+                $(".기타").addClass("d-flex")
+
+
+            }
+            else{
+                $(".봄").addClass("d-none")
+                $(".여름").addClass("d-none")
+                $(".가을").addClass("d-none")
+                $(".겨울").addClass("d-none")
+                $(".사계절").addClass("d-none")
+                $(".기타").addClass("d-none")
+                $(".봄").addClass("d-flex")
+                $(".여름").addClass("d-flex")
+                $(".가을").addClass("d-flex")
+                $(".겨울").addClass("d-flex")
+                $(".사계절").addClass("d-flex")
+                $(".기타").addClass("d-flex")
+
+            }
+        });
+        $("#select2").change(function(){
+            var result = $("#select2 option:selected").val();
+            if(result == "상의"){
+                $(".상의").removeClass("d-none");
+                $(".아우터").addClass("d-none");
+                $(".바지").addClass("d-none");
+                $(".원피스").addClass("d-none");
+                $(".스커트").addClass("d-none");
+                $(".가방").addClass("d-none");
+                $(".모자").addClass("d-none");
+                $(".신발").addClass("d-none");
+                $(".전신").addClass("d-none");
+                $(".기타").addClass("d-none");
+
+                $(".상의").addClass("d-flex");
+                $(".아우터").removeClass("d-flex");
+                $(".바지").removeClass("d-flex");
+                $(".원피스").removeClass("d-flex");
+                $(".스커트").removeClass("d-flex");
+                $(".가방").removeClass("d-flex");
+                $(".모자").removeClass("d-flex");
+                $(".신발").removeClass("d-flex");
+                $(".전신").removeClass("d-flex");
+                $(".기타").removeClass("d-flex");
+            }
+            else if(result == "아우터"){
+                $(".상의").addClass("d-none");
+                $(".아우터").removeClass("d-none");
+                $(".바지").addClass("d-none");
+                $(".원피스").addClass("d-none");
+                $(".스커트").addClass("d-none");
+                $(".가방").addClass("d-none");
+                $(".모자").addClass("d-none");
+                $(".신발").addClass("d-none");
+                $(".전신").addClass("d-none");
+                $(".기타").addClass("d-none");
+
+                $(".상의").removeClass("d-flex");
+                $(".아우터").addClass("d-flex");
+                $(".바지").removeClass("d-flex");
+                $(".원피스").removeClass("d-flex");
+                $(".스커트").removeClass("d-flex");
+                $(".가방").removeClass("d-flex");
+                $(".모자").removeClass("d-flex");
+                $(".신발").removeClass("d-flex");
+                $(".전신").removeClass("d-flex");
+                $(".기타").removeClass("d-flex");
+            }
+            else if(result == "바지"){
+                $(".상의").addClass("d-none");
+                $(".아우터").addClass("d-none");
+                $(".바지").removeClass("d-none");
+                $(".원피스").addClass("d-none");
+                $(".스커트").addClass("d-none");
+                $(".가방").addClass("d-none");
+                $(".모자").addClass("d-none");
+                $(".신발").addClass("d-none");
+                $(".전신").addClass("d-none");
+                $(".기타").addClass("d-none");
+
+                $(".상의").removeClass("d-flex");
+                $(".아우터").removeClass("d-flex");
+                $(".바지").addClass("d-flex");
+                $(".원피스").removeClass("d-flex");
+                $(".스커트").removeClass("d-flex");
+                $(".가방").removeClass("d-flex");
+                $(".모자").removeClass("d-flex");
+                $(".신발").removeClass("d-flex");
+                $(".전신").removeClass("d-flex");
+                $(".기타").removeClass("d-flex");
+            }
+            else if(result == "원피스"){
+                $(".상의").addClass("d-none");
+                $(".아우터").addClass("d-none");
+                $(".바지").addClass("d-none");
+                $(".원피스").removeClass("d-none");
+                $(".스커트").addClass("d-none");
+                $(".가방").addClass("d-none");
+                $(".모자").addClass("d-none");
+                $(".신발").addClass("d-none");
+                $(".전신").addClass("d-none");
+                $(".기타").addClass("d-none");
+
+                $(".상의").removeClass("d-flex");
+                $(".아우터").removeClass("d-flex");
+                $(".바지").removeClass("d-flex");
+                $(".원피스").addClass("d-flex");
+                $(".스커트").removeClass("d-flex");
+                $(".가방").removeClass("d-flex");
+                $(".모자").removeClass("d-flex");
+                $(".신발").removeClass("d-flex");
+                $(".전신").removeClass("d-flex");
+                $(".기타").removeClass("d-flex");
+            }
+            else if(result == "스커트"){
+                $(".상의").addClass("d-none");
+                $(".아우터").addClass("d-none");
+                $(".바지").addClass("d-none");
+                $(".원피스").addClass("d-none");
+                $(".스커트").removeClass("d-none");
+                $(".가방").addClass("d-none");
+                $(".모자").addClass("d-none");
+                $(".신발").addClass("d-none");
+                $(".전신").addClass("d-none");
+                $(".기타").addClass("d-none");
+
+                $(".상의").removeClass("d-flex");
+                $(".아우터").removeClass("d-flex");
+                $(".바지").removeClass("d-flex");
+                $(".원피스").removeClass("d-flex");
+                $(".스커트").addClass("d-flex");
+                $(".가방").removeClass("d-flex");
+                $(".모자").removeClass("d-flex");
+                $(".신발").removeClass("d-flex");
+                $(".전신").removeClass("d-flex");
+                $(".기타").removeClass("d-flex");
+            }
+            else if(result == "가방"){
+                $(".상의").addClass("d-none");
+                $(".아우터").addClass("d-none");
+                $(".바지").addClass("d-none");
+                $(".원피스").addClass("d-none");
+                $(".스커트").addClass("d-none");
+                $(".가방").removeClass("d-none");
+                $(".모자").addClass("d-none");
+                $(".신발").addClass("d-none");
+                $(".전신").addClass("d-none");
+                $(".기타").addClass("d-none");
+
+                $(".상의").removeClass("d-flex");
+                $(".아우터").removeClass("d-flex");
+                $(".바지").removeClass("d-flex");
+                $(".원피스").removeClass("d-flex");
+                $(".스커트").removeClass("d-flex");
+                $(".가방").addClass("d-flex");
+                $(".모자").removeClass("d-flex");
+                $(".신발").removeClass("d-flex");
+                $(".전신").removeClass("d-flex");
+                $(".기타").removeClass("d-flex");
+            }
+            else if(result == "모자"){
+                $(".상의").addClass("d-none");
+                $(".아우터").addClass("d-none");
+                $(".바지").addClass("d-none");
+                $(".원피스").addClass("d-none");
+                $(".스커트").addClass("d-none");
+                $(".가방").addClass("d-none");
+                $(".모자").removeClass("d-none");
+                $(".신발").addClass("d-none");
+                $(".전신").addClass("d-none");
+                $(".기타").addClass("d-none");
+
+                $(".상의").removeClass("d-flex");
+                $(".아우터").removeClass("d-flex");
+                $(".바지").removeClass("d-flex");
+                $(".원피스").removeClass("d-flex");
+                $(".스커트").removeClass("d-flex");
+                $(".가방").removeClass("d-flex");
+                $(".모자").addClass("d-flex");
+                $(".신발").removeClass("d-flex");
+                $(".전신").removeClass("d-flex");
+                $(".기타").removeClass("d-flex");
+            }
+            else if(result == "신발"){
+                $(".상의").addClass("d-none");
+                $(".아우터").addClass("d-none");
+                $(".바지").addClass("d-none");
+                $(".원피스").addClass("d-none");
+                $(".스커트").addClass("d-none");
+                $(".가방").addClass("d-none");
+                $(".모자").addClass("d-none");
+                $(".신발").removeClass("d-none");
+                $(".전신").addClass("d-none");
+                $(".기타").addClass("d-none");
+
+                $(".상의").removeClass("d-flex");
+                $(".아우터").removeClass("d-flex");
+                $(".바지").removeClass("d-flex");
+                $(".원피스").removeClass("d-flex");
+                $(".스커트").removeClass("d-flex");
+                $(".가방").removeClass("d-flex");
+                $(".모자").removeClass("d-flex");
+                $(".신발").addClass("d-flex");
+                $(".전신").removeClass("d-flex");
+                $(".기타").removeClass("d-flex");
+            }
+            else if(result == "전신"){
+                $(".상의").addClass("d-none");
+                $(".아우터").addClass("d-none");
+                $(".바지").addClass("d-none");
+                $(".원피스").addClass("d-none");
+                $(".스커트").addClass("d-none");
+                $(".가방").addClass("d-none");
+                $(".모자").addClass("d-none");
+                $(".신발").addClass("d-none");
+                $(".전신").removeClass("d-none");
+                $(".기타").addClass("d-none");
+
+                $(".상의").removeClass("d-flex");
+                $(".아우터").removeClass("d-flex");
+                $(".바지").removeClass("d-flex");
+                $(".원피스").removeClass("d-flex");
+                $(".스커트").removeClass("d-flex");
+                $(".가방").removeClass("d-flex");
+                $(".모자").removeClass("d-flex");
+                $(".신발").removeClass("d-flex");
+                $(".전신").addClass("d-flex");
+                $(".기타").removeClass("d-flex");
+            }
+            else if(result == "기타"){
+                $(".상의").addClass("d-none");
+                $(".아우터").addClass("d-none");
+                $(".바지").addClass("d-none");
+                $(".원피스").addClass("d-none");
+                $(".스커트").addClass("d-none");
+                $(".가방").addClass("d-none");
+                $(".모자").addClass("d-none");
+                $(".신발").addClass("d-none");
+                $(".전신").addClass("d-none");
+                $(".기타").removeClass("d-none");
+
+                $(".상의").removeClass("d-flex");
+                $(".아우터").removeClass("d-flex");
+                $(".바지").removeClass("d-flex");
+                $(".원피스").removeClass("d-flex");
+                $(".스커트").removeClass("d-flex");
+                $(".가방").removeClass("d-flex");
+                $(".모자").removeClass("d-flex");
+                $(".신발").removeClass("d-flex");
+                $(".전신").removeClass("d-flex");
+                $(".기타").addClass("d-flex");
+            }
+            else{
+                $(".상의").removeClass("d-none");
+                $(".아우터").removeClass("d-none");
+                $(".바지").removeClass("d-none");
+                $(".원피스").removeClass("d-none");
+                $(".스커트").removeClass("d-none");
+                $(".가방").removeClass("d-none");
+                $(".모자").removeClass("d-none");
+                $(".신발").removeClass("d-none");
+                $(".전신").removeClass("d-none");
+                $(".기타").removeClass("d-none");
+
+                $(".상의").addClass("d-flex");
+                $(".아우터").addClass("d-flex");
+                $(".바지").addClass("d-flex");
+                $(".원피스").addClass("d-flex");
+                $(".스커트").addClass("d-flex");
+                $(".가방").addClass("d-flex");
+                $(".모자").addClass("d-flex");
+                $(".신발").addClass("d-flex");
+                $(".전신").addClass("d-flex");
+                $(".기타").addClass("d-flex");
+            }
+        });
+        
+    });
+</script>
+
+<style>
+    * { 
+        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    }
+    #wrap{
+        max-width: 500px;
+        margin: 0 auto;
+        
+    }
+    
+    .line{
+        border-bottom: solid 1px gray;
+    }
+    .line3{
+        width: 30px;
+        height: 100%;
+    }
+    .headerfix{
+        border-bottom: 1px solid gray;
+        background-color: rgb(235, 245, 255);
+    }
+    .footerfix{
+        max-width: 500px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: rgb(235, 245, 255);
+        border-top: 1px solid gray;
+    }
+    .select_box{
+        float: right;
+    }
+    .image_box{
+        width: 150px;
+        height: 100px;
+    }
+    .write_box{
+        width: 350px;
+    }
+    .heart_div{
+        float: right;
+    }
+    a{
+        color: black;
+        text-decoration:none;
+    }
+    a:hover{
+        color: black;
+        text-decoration:none;
+    }
+    
+</style>

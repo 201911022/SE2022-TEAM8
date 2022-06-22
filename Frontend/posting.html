@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 제이쿼리 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- 모바일 비율 화면 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 언어 -->
+        <meta charset="UTF-8">
+        <title>게시물 작성</title>
+        <!-- 아이콘 -->
+        <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous"></script>
+        <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+        <div id="wrap">
+            <div class="headerfix">
+                <div class="d-flex justify-content-between pt-4 mb-2">
+                    <div class="ml-3">
+                        <a href="myclothes.html">
+                            <img src="file/cancle.png" width="25">
+                        </a>
+                    </div>
+                    <div><h5>게시물 작성</h5></div>
+                    <div class="upload mr-3 ">
+                        <button type="submit" id="post-button">완료</button>
+                    </div>
+                </div>   
+            </div>
+            <form id="postForm">
+            <label for="input_file">
+                <div class="upload-image d-flex justify-content-center m-3 p-3">
+                    <div>
+                        <img src="file/camera.png" width="30">
+                    </div>
+                </div>
+            </label>
+            <input type="file" id="input_file" class="d-none" accept="image/*">
+            <img id="pre" src="#" class="d-none pt-2" style="width: 150px;"/>
+            <hr/>
+
+            <div class="post-title pl-3">
+                <input type="text" placeholder="제목" id="titleInput">
+            </div>
+            <hr/>
+            <div class="d-flex">
+                <div class="category pl-3">
+                    <select id="select1">
+                        <option>계절 </option>
+                        <option>봄</option>
+                        <option>여름</option>
+                        <option>가을</option>
+                        <option>겨울</option>
+                        <option>사계절</option>
+                        <option>기타</option>
+                    </select>
+                </div>
+                <div class="category pl-3">
+                    <select id="select2">
+                        <option>옷 종류 </option>
+                        <option>상의</option>
+                        <option>아우터</option>
+                        <option>바지</option>
+                        <option>원피스</option>
+                        <option>스커트</option>
+                        <option>가방</option>
+                        <option>모자</option>
+                        <option>신발</option>
+                        <option>전신</option>
+                        <option>기타</option>
+                    </select>
+                </div>
+                <div class="pl-3">
+                    <input type="checkbox" value="1" id="check_box">
+                    게시물 공유
+                </div>
+            </div>
+
+            
+            <hr/>
+
+            <div class="content pl-3">
+                <textarea cols="40" rows="10" placeholder="내용을 입력하시오" id="contentInput"></textarea>
+            </div>
+        </form>
+
+        <div class="footerfix pt-1">  
+            <div class="d-flex justify-content-between">
+                <div class="ml-3">
+                    <div class="CurrIcon pl-4"></div>
+                    <div class="d-flex">
+                        <div class="City"></div>  &nbsp;
+                        <div class="CurrTemp"></div>
+                    </div>
+                </div>
+                <a href="index.html">
+                    <div class="ml-3">
+                        <div><img src="file/home.png"></div>
+                        <div class="pl-1">홈</div>
+                    </div>
+                </a>
+                <a href="myclothes.html">
+                    <div class="mr-3">
+                        <div class="pl-4"><img src="file/user.png"></div>
+                        <div>나의 옷장</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        </div>
+    </body>
+</html>
+<script>
+    $(document).ready(function(){
+        let weatherIcon = {
+                '01' : 'fas fa-sun',
+                '02' : 'fas fa-cloud-sun',
+                '03' : 'fas fa-cloud',
+                '04' : 'fas fa-cloud-meatball',
+                '09' : 'fas fa-cloud-sun-rain',
+                '10' : 'fas fa-cloud-showers-heavy',
+                '11' : 'fas fa-poo-storm',
+                '13' : 'far fa-snowflake',
+                '50' : 'fas fa-smog'
+                };
+
+                $.ajax({
+                url:'http://api.openweathermap.org/data/2.5/weather?q=Seoul&APPID=21e68587a0b75bfea426c57b2b2a6b9d&units=metric',
+
+                dataType:'json',
+                type:'GET',
+                success:function(data){
+                var $Icon = (data.weather[0].icon).substr(0,2);
+                var $Temp = Math.floor(data.main.temp) + 'º';
+                var $city = data.name;
+
+                $('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +' fa-lg"></i>');
+                $('.City').append($city);
+                $('.CurrTemp').append($Temp);
+            
+                }
+                });
+        $("#input_file").on("change", function(event) {
+
+            var a =$("#input_file");
+            var b= a.val();
+            var k =b.substr(12);
+            t = "image/" + k;
+
+            let file = event.target.files[0];
+           
+
+           
+            let reader = new FileReader(); 
+            reader.onload = function(e) {
+
+                $("#pre").attr("src", e.target.result);
+                $("#pre").removeClass("d-none");
+            }
+            
+            i = URL.createObjectURL(file);
+            reader.readAsDataURL(file);
+           
+        });
+        
+        $("#post-button").on("click", function(){
+			
+                
+            let content = $("#contentInput").val().trim();
+            let title = $("#titleInput").val().trim();
+            let season = $("#select1").val();
+            let cate = $("#select2").val();
+            let check;
+
+            if($("#check_box").is(":checked")){
+                check = "true";
+            }
+            else{
+                check = "false";
+            }
+           
+            if($("#input_file")[0].files.length == 0) {
+					alert("파일을 선택해주세요");
+					return;
+            }
+            if(title == ""){
+                alert("제목을 입력해주세요");
+                return;
+            }
+            if(title == ""){
+                alert("제목을 입력해주세요");
+                return;
+            }
+            if(season == "계절"){
+                alert("카테고리 선택을 해주세요");
+                return;
+            }
+            if(cate == "옷 종류"){
+                alert("카테고리 선택을 해주세요");
+                return;
+            }
+            if(content == ""){
+                alert("내용을 입력해주세요");
+                return;
+            }
+            
+            
+            $.ajax({
+                type: "POST",
+                url:"http://localhost:8080/team8/article/create",
+                contentType : "application/json",
+                data:JSON.stringify({
+                    "userId" : sessionStorage.getItem("id"),
+                    "title" : title,
+                    "content" : content,
+                    "season" : season,
+                    "category" : cate,
+                    "shared" : check,
+                    "image" : t
+                }),
+                success:function(data){
+                    alert("게시물 등록 완료");
+                    location.href="myclothes.html";
+                },
+                error:function(){
+                    alert("에러 발생");
+                }
+            });
+            
+
+        });
+        
+			
+            
+        
+    });
+</script>
+<style>
+    *{
+        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    }
+    #wrap{
+        max-width: 500px;     
+        margin: 0 auto;
+    }
+    .headerfix{
+        border-bottom: 1px solid gray;
+        background-color: rgb(235, 245, 255);
+    }
+    .upload button{
+        background-color: white;
+        border: none;
+    }
+    .upload-image{
+        border: 1px solid gray;
+        background-color: whitesmoke;
+        border-radius: 5px;
+        width: 70px;
+        height: 70px;
+    }
+    .post-title input{
+        border: none;
+    }
+    .post-title input{
+        width: 340px;
+    }
+    .content input{
+        border: none;
+        width: 100%;
+        height: 300px;
+    }
+    .footerfix{
+        max-width: 500px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: rgb(235, 245, 255);
+        border-top: 1px solid gray;
+    }
+    a{
+        color: black;
+        text-decoration:none;
+    }
+    a:hover{
+        color: black;
+        text-decoration:none;
+    }
+</style>

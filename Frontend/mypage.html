@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- 제이쿼리 부트스트랩 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- 모바일 비율 화면 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- 언어 -->
+        <meta charset="UTF-8">
+        <!-- 타이틀 -->
+        <title>내 정보</title>
+         <!-- 아이콘 -->
+         <script defer src="https://use.fontawesome.com/releases/v5.15.2/js/all.js" integrity="sha384-vuFJ2JiSdUpXLKGK+tDteQZBqNlMwAjhZ3TvPaDfN9QmbPb7Q8qUpbSNapQev3YF" crossorigin="anonymous"></script>
+         <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+    </head>
+    <script>
+        $(document).ready(function(){      
+            var id = sessionStorage.getItem("id");
+           
+            $.ajax({
+                url:`http://localhost:8080/team8/myinfo/`+id+``,
+                type:"get",
+                datatype:"json",
+                success:function(json){
+                    $("#user-id").append(id);
+                    $("#user-name").append(json.name);
+                    $("#user-tel").append(json.tel);
+                },
+                error:function(){
+                    alert("오류");
+                }
+            });
+        });
+    </script>
+    <body>
+        <div id="wrap">
+            <div class="headerfix pb-2">
+                <div class="d-flex justify-content-between  pt-3">
+                    <div class="ml-3 pt-1"><img src="file/bell.png" ></div>
+                    <div><img src="file/logo.png" style="width: 70px;"></div>
+                    <div class="mr-3 pt-1"><img src="file/search.png"></div>
+                </div>
+            </div>
+            <div class="title d-flex justify-content-center pt-4 pb-2 m-4">
+                <h2>내 정보</h2>
+            </div>
+            <table class="d-flex justify-content-center">
+                <tr>
+                    <th scope="row">아이디</th>
+                    <td id="user-id"></td>
+                </tr>     
+                <tr style="display:1">
+                <th scope="row">이름</th>
+                            <td id="user-name"></td>
+                        </tr>
+                
+                <tr>
+                <th scope="row">휴대전화</th>
+                    <td id="user-tel"></td>
+                        </tr>
+                <tr>
+            </table>
+            <div class="d-flex pt-4 justify-content-center">
+                <div class="mr-2">
+                    <a href="userupdate.html">
+                        <button class="btn check">정보 수정</button>
+                    </a>
+                </div>
+                <div class="ml-2">
+                    <a href="passwordupdate.html">
+                    <button class="btn">비밀번호 수정</button>
+                </a>
+                </div>
+            </div>
+            
+            <div class="footerfix pt-1">  
+                <div class="d-flex justify-content-between">
+                    <div class="ml-3">
+                        <div class="CurrIcon pl-4"></div>
+                        <div class="d-flex">
+                            <div class="City"></div>  &nbsp;
+                            <div class="CurrTemp"></div>
+                        </div>
+                    </div>
+                    <a href="index.html">
+                        <div class="ml-3">
+                            <div><img src="file/home.png"></div>
+                            <div class="pl-1">홈</div>
+                        </div>
+                    </a>
+                    <a href="myclothes.html">
+                        <div class="mr-3">
+                            <div class="pl-4"><img src="file/user.png"></div>
+                            <div>나의 옷장</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+		$(document).ready(function(){
+			let weatherIcon = {
+        '01' : 'fas fa-sun',
+        '02' : 'fas fa-cloud-sun',
+        '03' : 'fas fa-cloud',
+        '04' : 'fas fa-cloud-meatball',
+        '09' : 'fas fa-cloud-sun-rain',
+        '10' : 'fas fa-cloud-showers-heavy',
+        '11' : 'fas fa-poo-storm',
+        '13' : 'far fa-snowflake',
+        '50' : 'fas fa-smog'
+        };
+
+        $.ajax({
+        url:'http://api.openweathermap.org/data/2.5/weather?q=Seoul&APPID=21e68587a0b75bfea426c57b2b2a6b9d&units=metric',
+
+        dataType:'json',
+        type:'GET',
+        success:function(data){
+        var $Icon = (data.weather[0].icon).substr(0,2);
+        var $Temp = Math.floor(data.main.temp) + 'º';
+        var $city = data.name;
+
+        $('.CurrIcon').append('<i class="' + weatherIcon[$Icon] +' fa-lg"></i>');
+        $('.City').append($city);
+        $('.CurrTemp').append($Temp);
+       
+        }
+        });
+        });
+</script>
+
+<style>
+    *{
+        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    }
+    #wrap{
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .headerfix{
+        border-bottom: 1px solid gray;
+        background-color: rgb(235, 245, 255);
+    }
+    .info-title{
+        font-size: 15px;
+        width: 70px;
+        border-right: solid 1px gainsboro;
+    }
+    th{
+        padding: 20px;
+        text-align: left;
+        vertical-align: top;
+        border-top: solid 1px lightslategray;
+        border-bottom: solid 1px lightslategray;
+    }
+    td{
+        padding: 20px;
+        text-align: right;
+        vertical-align: top;
+        border-top: solid 1px lightslategray;
+        border-bottom: solid 1px lightslategray;
+    }
+    .box {
+        display: block;
+        width: 250px;
+        height: 48px;
+        border: solid 1px #dadada;
+        margin: 10px 14px 10px 0px;
+    }
+    .int {
+        display: block;
+        position: relative;
+        width: 230px;
+        height: 29px;
+        border: none;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+    .button {
+        margin-top: 30px;
+    }
+
+    #update-button {
+        width: 250px;
+        height: 48px;
+        margin-top: 10px;
+        border: 0px;
+        cursor: pointer;
+        color: #fff;
+        background-color: #4e4e4e;
+        font-size: 18px;
+    }
+    .footerfix{
+        max-width: 500px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: rgb(235, 245, 255);
+        border-top: 1px solid gray;
+    }
+    a{
+        color: black;
+        text-decoration:none;
+    }
+    a:hover{
+        color: black;
+        text-decoration:none;
+    }
+</style>

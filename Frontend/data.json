@@ -1,0 +1,19 @@
+{"articlelist":[{
+    "articleNo" : 1,
+    "title" : "실험1",
+    "season" : "가을",
+    "category" : "상의",
+    "userId" : "천원지폐",
+    "content" : "아무 내용",
+    "image" : "https://ekolping.co.kr/web/product/medium/202108/10e081c0511d222c5d2a701da78377f4.jpg"
+},
+{
+    "articleNo" : 3,
+    "title" : "실1",
+    "season" : "여름",
+    "category" : "하의",
+    "name" : "천원지폐33",
+    "content" : "아무 내용3333333",
+    "image" : "https://ekolping.co.kr/web/product/medium/202108/10e081c0511d222c5d2a701da78377f4.jpg"
+}]
+}
