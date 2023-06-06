@@ -2,6 +2,7 @@
 
 # 🎯 프로젝트 목표
 - Spring Boot 구조 및 JPA 학습
+- 프로젝트에서 MySQL 사용과 연결
 - CRUD 구현
 # 🛠️ 사용 기술
 Front-End : <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-flat&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-flat&logo=javascript&logoColor=F7DF1E"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-flat&logo=css3&logoColor=white">
